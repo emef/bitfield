@@ -23,16 +23,16 @@ func TestSet(t *testing.T) {
 func TestClear(t *testing.T) {
 	b := New(100)
 	for i := uint32(0); i < 100; i++ {
-		if b.Test(i) {
-			t.Errorf("%d shouldn't be set", i)
-		}
 		b.Set(i)
-		if !b.Test(i) {
-			t.Errorf("%d should be set", i)
-		}
+	}
+
+	for i := uint32(0); i < 100; i += 3 {
 		b.Clear(i)
-		if b.Test(i) {
-			t.Errorf("%d shouldn't be set after clear", i)
+	}
+
+	for i := uint32(0); i < 100; i++ {
+		if b.Test(i) != (i % 3 != 0) {
+			t.Errorf("Clear is broken!")
 		}
 	}
 }

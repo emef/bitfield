@@ -11,9 +11,18 @@ func New(n int) BitField {
 	return BitField(make([]byte, n))
 }
 
+func (b BitField) Size() int {
+	return len(b)
+}
+
 func (b BitField) Set(i uint32) {
 	idx, offset := (i / 8), (i % 8)
 	b[idx] |= (1 << uint(offset))
+}
+
+func (b BitField) Flip(i uint32) {
+	idx, offset := (i / 8), (i % 8)
+	b[idx] ^= (1 << uint(offset))
 }
 
 func (b BitField) Clear(i uint32) {
