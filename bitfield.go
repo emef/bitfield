@@ -112,7 +112,6 @@ func (b BitField) ORMask(m BitField) {
 	}
 }
 
-// XORMask ...
 // XORMask performs an XOR operation between b and m, storing result in b.
 // If b is smaller than m, the extra bits of m are ignored (b isn't enlarged).
 func (b BitField) XORMask(m BitField) {
