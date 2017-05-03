@@ -5,8 +5,8 @@ type BitField []byte
 
 // New returns a new BitField of at least n bits, all 0s
 func New(n int) BitField {
-	size = 1 + ((n - 1) / 8) // Ceiling of the division
-	return BitField(make([]byte, size))
+	n = 1 + ((n - 1) / 8) // Ceiling of the division
+	return BitField(make([]byte, n))
 }
 
 // NewFromUint32 returns a new BitField of 4 bytes, with n initial value
