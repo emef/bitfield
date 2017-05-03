@@ -1,14 +1,12 @@
 package bitfield
 
-import "math"
-
 // BitField type
 type BitField []byte
 
 // New returns a new BitField of at least n bits, all 0s
 func New(n int) BitField {
-	n = int(math.Ceil(float64(n) / 8.0))
-	return BitField(make([]byte, n))
+	size = 1 + ((n - 1) / 8) // Ceiling of the division
+	return BitField(make([]byte, size))
 }
 
 // NewFromUint32 returns a new BitField of 4 bytes, with n initial value
